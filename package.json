@@ -1,0 +1,19 @@
+{
+  "name": "resourcer",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "test": "istanbul cover tests.js "
+  },
+  "dependencies": {
+    "xml2js": "~0.2.7",
+    "underscore": "1.4.x",
+    "node.extend": "1.0.7",
+    "node-dir": "0.0.10",
+    "underscore.string": "2.3.1"
+  },
+  "devDependencies": {
+    "nodeunit": "*",
+    "istanbul": "*"
+  }
+}

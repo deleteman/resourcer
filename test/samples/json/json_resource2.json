@@ -1,0 +1,7 @@
+{
+	"key": "this is a string key",
+	"complex": {
+		"key1": 123,
+		"key2": "hola"
+	}
+}
