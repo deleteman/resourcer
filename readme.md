@@ -24,6 +24,14 @@ console.log(resourcer.R.jsons.names.firstNames);
 
 ```
 
+##Install
+
+To install the app, just use npm:
+
+```
+$ npm install node-resourcer
+```
+
 ##Init method
 
 The init method takes two arguments: options and an optional callback.
