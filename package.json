@@ -1,5 +1,5 @@
 {
-  "name": "resourcer",
+  "name": "node-resourcer",
   "version": "0.0.1",
   "private": false,
   "scripts": {
