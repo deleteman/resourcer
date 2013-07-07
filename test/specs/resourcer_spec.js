@@ -16,6 +16,33 @@ exports.main_interface = {
 		test.equal(str2, "String", "STR2 should be equal to String");
 		test.equal(str3, "String", "STR2 should be equal to String");
 		test.done();
+	},
+	sliptFields: function(test) {
+		test.expect(5);
+		var parts = resourcer.splitFields('"this is one, comma field", "and this is another, comman field", singleword');
+		var parts2 = resourcer.splitFields('singleword1, singleword2, singleword3');
+		var parts3 = resourcer.splitFields('singleword1, "singleword2, hola", singleword3');
+		var parts4 = resourcer.splitFields('n1,n2,n3,n4,n5,n6');
+		var parts5 = resourcer.splitFields('"field ""quoted"" word", "other line"');
+		test.equal(parts.length, 3);
+		test.equal(parts2.length, 3);
+		test.equal(parts3.length, 3);
+		test.ok(parts4.length == 6);
+		test.equal(parts5[0], 'field "quoted" word');
+		test.done();
+	},
+	customFieldSplit: function(test) {
+		test.expect(4);
+		resourcer.csvOpts.fieldSplitter = ";";
+		var parts = resourcer.splitFields('"this is one; comma field"; "and this is another, comman field"; singleword');
+		var parts2 = resourcer.splitFields('singleword1; singleword2; singleword3');
+		var parts3 = resourcer.splitFields('singleword1; "singleword2; hola"; singleword3');
+		var parts4 = resourcer.splitFields('n1;n2;n3;n4;n5;n6');
+		test.equal(parts.length, 3);
+		test.equal(parts2.length, 3);
+		test.equal(parts3.length, 3);
+		test.ok(parts4.length == 6);
+		test.done();
 	}
 }
 
@@ -23,6 +50,9 @@ exports.resources = {
 	json: function(test) {
 		test.expect(1);
 		resourcer.init({
+			csvOpts: {
+				fieldSplitter: ","
+			},
 			path: "/test/samples/"
 		}, function() {
 			//console.log(resourcer.R.json);
@@ -34,9 +64,8 @@ exports.resources = {
 		test.expect(1);
 		resourcer.init({
 			path: "/test/samples/",
-			verbose: true
+			verbose:false 
 		}, function() {
-			//console.log(resourcer.R.json);
 			test.equal(resourcer.R.json.invalid, undefined);
 			test.done();
 		});
@@ -47,6 +76,15 @@ exports.resources = {
 			path: "/test/samples/"
 		}, function() {
 			test.ok(resourcer.R.xml.sample2.test != null);
+			test.done();
+		});
+	},
+	csv: function(test) {
+		test.expect(1);
+		resourcer.init({
+			path: "/test/samples/"
+		}, function() {
+			test.ok(resourcer.R.more_content.people[0].last_name == "Doglio");
 			test.done();
 		});
 	},

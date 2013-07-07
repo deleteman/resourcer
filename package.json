@@ -1,7 +1,7 @@
 {
   "name": "node-resourcer",
   "author": "Fernando Doglio <deleteman@gmail.com>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "scripts": {
     "test": "istanbul cover tests.js "
@@ -13,6 +13,7 @@
   "keywords": [
     "resources",
     "json",
+    "csv",
     "xml"
   ],
   "dependencies": {
