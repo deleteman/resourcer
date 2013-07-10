@@ -18,19 +18,23 @@ exports.main_interface = {
 		test.done();
 	},
 	sliptFields: function(test) {
-		test.expect(6);
+		test.expect(8);
 		var parts = resourcer.splitFields('"this is one, comma field", "and this is another, comman field", singleword');
 		var parts2 = resourcer.splitFields('singleword1, singleword2, singleword3');
 		var parts3 = resourcer.splitFields('singleword1, "singleword2, hola", singleword3');
 		var parts4 = resourcer.splitFields('n1,n2,n3,n4,n5,n6');
 		var parts5 = resourcer.splitFields('"field ""quoted"" word", "other line"');
 		var parts6 = resourcer.splitFields('"1", ,"2"');
+		var parts7 = resourcer.splitFields(',1 ,2');
+		var parts8 = resourcer.splitFields('1,2 ,');
 		test.equal(parts.length, 3);
 		test.equal(parts2.length, 3);
 		test.equal(parts3.length, 3);
 		test.ok(parts4.length == 6);
 		test.equal(parts5[0], 'field "quoted" word');
 		test.equal(parts6[1], '');
+		test.equal(parts7[0], '');
+		test.equal(parts8[2], '');
 		test.done();
 	},
 	customFieldSplit: function(test) {
