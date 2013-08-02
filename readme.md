@@ -38,7 +38,7 @@ The init method takes two arguments: options and an optional callback.
 
 The options supported are:
 
-+ path: (Mandatory) It's the relative path of the folder containing all the resources.
++ path: (Mandatory) It's the  path of the folder containing all the resources (can be relative or absolute).
 + extraFormats: (Optional) Hash containing the extra known formats and their respective parsers.
 + verbose: (Optional, defaulted to false) If true, errors and info messages will be printed on the console.
 + csvOpts: (Optional) Configuration options to be used when parsing a CSV file.
