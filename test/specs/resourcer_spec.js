@@ -59,7 +59,7 @@ exports.resources = {
 			csvOpts: {
 				fieldSplitter: ","
 			},
-			path: "/test/samples/"
+			path: "test/samples/"
 		}, function() {
 			//console.log(resourcer.R.json);
 			test.ok(resourcer.R.json.sample1.test != null);
@@ -69,7 +69,7 @@ exports.resources = {
 	invalid_json: function(test) {
 		test.expect(1);
 		resourcer.init({
-			path: "/test/samples/",
+			path: "test/samples/",
 			verbose:false 
 		}, function() {
 			test.equal(resourcer.R.json.invalid, undefined);
@@ -79,7 +79,7 @@ exports.resources = {
 	non_json: function(test) {
 		test.expect(1);
 		resourcer.init({
-			path: "/test/samples/"
+			path: "test/samples/"
 		}, function() {
 			test.ok(resourcer.R.xml.sample2.test != null);
 			test.done();
@@ -88,7 +88,7 @@ exports.resources = {
 	csv: function(test) {
 		test.expect(1);
 		resourcer.init({
-			path: "/test/samples/"
+			path: "test/samples/"
 		}, function() {
 			test.ok(resourcer.R.more_content.people[0].last_name == "Doglio");
 			test.done();
@@ -97,7 +97,7 @@ exports.resources = {
 	original: function(test) {
 		test.expect(1);
 		resourcer.init({
-			path: "/test/samples/"
+			path: "test/samples/"
 		}, function() {
 			var original_content = resourcer.R.xml.sample2.original();
 			test.equal(original_content , "<test id=\"xml-test\">true</test>");
@@ -107,7 +107,7 @@ exports.resources = {
 	list: function(test) {
 		test.expect(2);
 		resourcer.init( {
-			path: "/test/samples/"
+			path: "test/samples/"
 		}, function() {
 			var resources = resourcer.R.json.listResources();
 			///console.log(resources);
@@ -119,7 +119,7 @@ exports.resources = {
 	custom_loader: function(test) {
 		test.expect(1);
 		resourcer.init( {
-			path: "/test/samples/",
+			path: "test/samples/",
 			extraFormats: { "txt": function(content, cb) {
 				cb(null, { text: content});
 			}}
@@ -131,7 +131,7 @@ exports.resources = {
 	data_kept: function(test) {
 		test.expect(1);
 		resourcer.init( {
-			path: "/test/samples/"
+			path: "test/samples/"
 		}, function() {
 			var otherR = require("../extra").R;
 			test.ok(otherR.json);
