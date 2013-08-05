@@ -61,7 +61,6 @@ exports.resources = {
 			},
 			path: "test/samples/"
 		}, function() {
-			//console.log(resourcer.R.json);
 			test.ok(resourcer.R.json.sample1.test != null);
 			test.done();
 		});
@@ -81,7 +80,7 @@ exports.resources = {
 		resourcer.init({
 			path: "test/samples/"
 		}, function() {
-			test.ok(resourcer.R.xml.sample2.test != null);
+			test.ok(resourcer.R.xml.sample2["#"] != null);
 			test.done();
 		});
 	},
@@ -110,7 +109,6 @@ exports.resources = {
 			path: "test/samples/"
 		}, function() {
 			var resources = resourcer.R.json.listResources();
-			///console.log(resources);
 			test.ok(resources instanceof Array, "It should be an array");
 			test.ok(resources.length == 2, "It should contain 2 elements");
 			test.done();
